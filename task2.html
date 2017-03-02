@@ -43,7 +43,7 @@ var aqiData = [
     var curObj = aqiData[i];
     if(curObj[1] <= 60) break;
     var li = document.createElement("li");
-    var str = "第"+i+"名："+curObj[0]+", "+curObj[1];
+    var str = "第"+(i+1)+"名："+curObj[0]+", "+curObj[1];
     var liText = document.createTextNode(str);
     li.appendChild(liText);
     ul.appendChild(li);
