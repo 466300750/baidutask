@@ -81,13 +81,15 @@ function sortAqiData(data) {
  */
 function render(data) {
   var btn = document.getElementById("sort-btn");
-  for(var i=data.length-1; i>=0; i--) {
+  var fragment = document.createDocumentFragment();
+  for(var i=0; i<data.length; i++) {
     var curObj = data[i];
     var li = document.createElement("li");
     var str = "第"+(i+1)+"名："+curObj[0]+"空气质量, "+curObj[1];
     li.innerText = str;
-    insertAfter(li, btn);
+    fragment.appendChild(li);
   }
+  insertAfter(fragment, btn);
 }
 
 function insertAfter(newElement, targetElement) {
