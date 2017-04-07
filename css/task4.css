@@ -1,0 +1,16 @@
+* {
+	font-size: 30px;
+}
+
+.number {
+	display: block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 2px;
+	padding: 10px;
+	color: 0xfff;
+	background-color: red;
+	/*width: 100px;*/
+	height: 60px;
+	overflow:hidden;
+}

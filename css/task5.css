@@ -1,0 +1,12 @@
+
+.number {
+	display: block;
+	float: left;
+	margin-left: 6px;
+	margin-top: 2px;
+	color: 0xffff;
+	background-color: red;
+	width: 6px;
+	/*height: 60px;*/
+	/*overflow:hidden;*/
+}

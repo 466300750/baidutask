@@ -1,3 +1,9 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+
 body {
 	
 	background-color: #000000;	
@@ -30,14 +36,16 @@ nav {
 nav ul {
 	margin-left: 550px;
 	margin-top: 50px;
+	float: right;
 }
 
 nav li {
-	float: left;
 	
+	float: left;
 }
 
 nav li a {
+
 	text-decoration: none;
 	font-size: 12px;
 	color: #fff;
@@ -65,6 +73,10 @@ nav li a {
 
 .setBlue {
 	color: blue;
+}
+
+ol {
+	margin-left: 40px;
 }
 
 
@@ -98,6 +110,8 @@ nav li a {
 }
 
 #sidebar th{
+	width:350px;
+	height:32px;
 	text-align: right;
 	font-weight: normal;
 }
@@ -124,4 +138,17 @@ nav li a {
 	background-color: blue;
 	color: #fff;
 	border-radius: 10px;
+}
+
+.footer {
+	background-color: #000;
+	color: #fff;
+	height: 60px;
+}
+
+.span {
+	font-size: 12px;
+	line-height: 60px;
+	text-align: center;
+
 }
