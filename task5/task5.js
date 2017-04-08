@@ -13,6 +13,7 @@ function addLoadEvent(func) {
 function handleInput() {
 	var textNode = document.getElementById("aqi-input");
 	var text = textNode.value;
+	textNode.value = "";
 	if(text === null) return;
 	var textNum = parseInt(text);
 	if(textNum <10 || textNum>100) {
@@ -32,7 +33,7 @@ function leftIn() {
 		} else {
 			var span = document.createElement("span");
 			span.className = "number";
-			span.innerText = textNum;
+			span.style.height = textNum+"px";
 			div.insertBefore(span,div.firstElementChild);
 		}
 	}			
@@ -48,8 +49,7 @@ function rightIn() {
 		} else {
 			var span = document.createElement("span");
 			span.className = "number";
-			span.style = "height:"+textNum+"px";
-			// span.innerText = textNum;
+			span.style.height = textNum+"px";
 			div.appendChild(span);
 		}
 	}				
@@ -59,50 +59,38 @@ function rightIn() {
 function leftOut() {
 	var div = document.getElementsByTagName("div").item(0);
 	var first = div.firstElementChild;
-	var text = first.lastChild.nodeValue;
+	var text = first.style.height.slice(0, -2);
 	alert(text);
-
-	var next = first.nextElementSibling;
-	while(next) {
-		first.innerText = next.innerText;
-		first = next;
-		next = next.nextElementSibling;		
-	}
-	first.innerText = "";
+	div.removeChild(div.firstElementChild);
 }
 
 function rightOut() {
 	var div = document.getElementsByTagName("div").item(0);
 	var last = div.lastElementChild;
-	var text = last.lastChild.nodeValue;
+	var text = last.style.height.slice(0. -2);
 	alert(text);
-	var prev = last.previousElementSibling;
-	while(prev) {
-		last.innerText = prev.innerText;
-		last = prev;
-		prev = last.previousElementSibling;
-	}
-	last.innerText = "";
+	div.removeChild(div.lastElementChild);
 }
 
-function deleteEle() {
-	this.innerText = "";
+function deleteEle(event) {
+	var div = document.getElementsByTagName("div").item(0);
+	if(event.target.nodeName.toLowerCase() === "span") {
+		div.removeChild(event.target);
+	}
 }
 
 function addListener() {
+	var div = document.getElementsByTagName("div").item(0);
 	var leftInBtn = document.getElementById("leftin");
 	var rightInBtn = document.getElementById("rightin");
 	var leftOutBtn = document.getElementById("leftout");
 	var rightOutBtn = document.getElementById("rightout");
 	var eleBtns = document.getElementsByClassName("number");
-	var len = eleBtns.length;
+	div.addEventListener("click", deleteEle, false);
 	leftInBtn.addEventListener("click", leftIn, false);
 	rightInBtn.addEventListener("click", rightIn, false);
 	leftOutBtn.addEventListener("click", leftOut, false);
 	rightOutBtn.addEventListener("click", rightOut, false);
-	for(var i=0; i<len; i++) {
-		eleBtns[i].addEventListener("click", deleteEle, false);
-	}
 }
 
 addLoadEvent(addListener);
