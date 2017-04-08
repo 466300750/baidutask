@@ -1,14 +1,42 @@
-div {
-	background-color: #ffffff;
-	height: 100px;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-.number {
-	display: block;
-	float: left;
-	margin-left: 6px;
-	margin-top: 2px;
-	color: 0xffff;
-	background-color: red;
-	width: 6px;
+.inputarea {
+    margin: 50px auto 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 100px auto 0;
+    padding: 0;
+    text-align: center;
+    height: 120px;
+    padding: 0 50px;
+}
+
+li {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 4px;
+    width: 20px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.current {
+    background-color: #FFBB33;
+}
+
+.next {
+    background-color: #FF4444;
+}
+
+.finish {
+    background-color: #99CC00;
 }
