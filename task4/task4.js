@@ -18,7 +18,7 @@ function leftIn() {
 	var span = document.createElement("span");
 	span.className = "number";
 	span.innerText = text;
-	span.addEventListener("click", deleteEle(event), false);
+	span.addEventListener("click", deleteEle, false);
 	div.insertBefore(span,div.firstElementChild);
 }
 
@@ -30,7 +30,7 @@ function rightIn() {
 	var span = document.createElement("span");
 	span.className = "number";
 	span.innerText = text;
-	span.addEventListener("click", deleteEle(event), false);
+	span.addEventListener("click", deleteEle, false);
 	div.appendChild(span);
 }
 
@@ -52,17 +52,21 @@ function rightOut() {
 
 function deleteEle(event) {
 	var div = document.getElementsByTagName("div").item(0);
-	console.log(event.target);
-	if(event.target.nodeName === "span")  {
+	var event = event || window.event;
+	console.log(event.target.nodeName);
+	if(event.target.nodeName.toLowerCase() === "span")  {
 		div.removeChild(event.target);
 	}
 }
 
 function addListener() {
+	var div = document.getElementsByTagName("div").item(0);
 	var leftInBtn = document.getElementById("leftin");
 	var rightInBtn = document.getElementById("rightin");
 	var leftOutBtn = document.getElementById("leftout");
 	var rightOutBtn = document.getElementById("rightout");
+
+	// div.addEventListener("click", deleteEle, false);
 	leftInBtn.addEventListener("click", leftIn, false);
 	rightInBtn.addEventListener("click", rightIn, false);
 	leftOutBtn.addEventListener("click", leftOut, false);
