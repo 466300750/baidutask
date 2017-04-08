@@ -79,18 +79,42 @@ function deleteEle(event) {
 	}
 }
 
+
+function bubbleSort() {
+	var numbers = document.getElementsByClassName("number");
+	var len = numbers.length;
+	if(len<2) return;
+	var arr = [];
+	for(var k=0; k<len; k++) {
+		arr.push(parseInt(numbers[k].style.height.slice(0, -2)));
+	}
+	for(var i=len; i>0; i--) {
+		for(var j=0; j<i-1; j++) {
+			if(arr[j] > arr[j+1]) {
+				var tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+				numbers[j].style.height = arr[j]+"px";
+				numbers[j+1].style.height = arr[j+1]+"px";
+			}
+		}
+	}
+}
+
 function addListener() {
 	var div = document.getElementsByTagName("div").item(0);
 	var leftInBtn = document.getElementById("leftin");
 	var rightInBtn = document.getElementById("rightin");
 	var leftOutBtn = document.getElementById("leftout");
 	var rightOutBtn = document.getElementById("rightout");
-	var eleBtns = document.getElementsByClassName("number");
+	var sort = document.getElementById("sort");
+
 	div.addEventListener("click", deleteEle, false);
 	leftInBtn.addEventListener("click", leftIn, false);
 	rightInBtn.addEventListener("click", rightIn, false);
 	leftOutBtn.addEventListener("click", leftOut, false);
 	rightOutBtn.addEventListener("click", rightOut, false);
+	sort.addEventListener("click", bubbleSort, false);
 }
 
 addLoadEvent(addListener);
