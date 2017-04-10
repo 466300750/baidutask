@@ -1,0 +1,25 @@
+.one {
+	width: 600px;
+	height: 80px;
+	border: 1px solid black;
+	display: -webkit-box;
+}
+
+.two, .three {
+	box-sizing: border-box;
+	display: -webkit-box;
+}
+
+.four {
+	box-sizing: border-box;
+}
+
+.two, .three, .four {
+	border: 1px solid black;
+	margin: 8px 6px;
+	-webkit-box-flex: 1;
+}
+
+#current {
+	background-color: blue;
+}
