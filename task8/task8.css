@@ -1,0 +1,53 @@
+/*.one {
+	width: 600px;
+	height: 80px;
+	border: 1px solid black;
+	display: -webkit-box;
+}
+
+.two, .three {
+	box-sizing: border-box;
+	display: -webkit-box;
+}
+
+.four {
+	box-sizing: border-box;
+}
+
+.two, .three, .four {
+	border: 1px solid black;
+	margin: 8px 6px;
+	-webkit-box-flex: 1;
+}
+
+#current {
+	background-color: blue;
+}*/
+
+* {
+	font-size: 10px;
+}
+
+#tree {
+	display: flex;
+}
+
+.node {
+	display: flex;
+    margin: 8px;
+    border-style:solid;
+    min-height: 20px;
+    min-width: 40px;
+    background-color: white;
+}
+
+
+/*div {
+	display: -webkit-box;
+    margin: 10px;
+    border-style:solid;
+    min-height: 20px;
+    min-width: 40px;
+    background-color: white;
+    -webkit-box-flex: 1;
+}*/
