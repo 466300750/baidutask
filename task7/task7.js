@@ -20,32 +20,122 @@ function addHandler(ele, type, handler) {
 	}
 }
 
-function traverse() {
-	var root = document.querySelector(".one");
-	root.style.backgroundColor = "blue";
-	recurse(root);	
+function preOrderTraverse() {
+	var root = document.querySelector("#one"),
+		arr = [];
+
+	preventBtn();
+
+	(function recurse(node) {
+		var children = node.children,
+			i;
+		arr.push(node);
+		if(children.length > 0) {
+			recurse(children[0]);		
+			recurse(children[1]);
+		}		
+	})(root);
+	display(arr);
 }
 
-function recurse(node) {
-	var children = node.children,
-		i;
-	
-	for(i=0; i<children.length; i++) {
+function inOrderTraverse() {
+	var root = document.querySelector("#one"),
+		arr = [];
 
-		setInterval(recurse(children[i]), 1000);
+	preventBtn();
 
+	(function recurse(node) {
+		var children = node.children,
+			i;
+		if(children.length > 0) {
+			recurse(children[0]);
+		} 			
+		arr.push(node);
+		if(children.length > 0) {
+			recurse(children[1]);
+		} 	
+	})(root);
+	display(arr);
+}
+
+function postOrderTraverse() {
+	var root = document.querySelector("#one"),
+		arr = [];
+
+	preventBtn();
+
+	(function recurse(node) {
+		var children = node.children,
+			i;
+		
+		for(i=0; i<children.length; i++) {
+			recurse(children[i]);
+		}
+		arr.push(node);
+	})(root);
+	display(arr);
+}
+
+function display(arr) {
+	var len = arr.length,
+		count = 0;
+
+	timer = setInterval(function() {
+		arr[Math.max(count - 1, 0)].style.backgroundColor = '#fff';
+        arr[Math.min(count, len - 1)].style.backgroundColor = '#09f';
+        count++;
+        if(count > arr.length){
+            clearInterval(timer);
+            allowBtn();
+            arr[len - 1].style.backgroundColor = '#fff';
+        }
+	}, 1000);
+}
+
+function stopTraverse() {
+	var nodes = document.querySelectorAll(".node");
+
+	clearInterval(timer);
+	for(var i=0; i<nodes.length; i++) {
+		nodes[i].style.backgroundColor = "white";
 	}
-	// if(node.previousSibling) {
-	// 	node.previousSibling.style = "{backgroud-color : white}";
-	// }
-	node.style.backgroundColor = "blue";
-	console.log(node.className);	
+
+	allowBtn();
+}
+
+function preventBtn() {
+	var btns = document.querySelectorAll("button"),
+		DLRBtn = btns[0],
+		LDRBtn = btns[1],
+		LRDBtn = btns[2];
+
+	DLRBtn.disabled = "disabled";
+	LDRBtn.disabled = "disabled";
+	LRDBtn.disabled = "disabled";
+}
+
+function allowBtn() {
+	var btns = document.querySelectorAll("button"),
+		DLRBtn = btns[0],
+		LDRBtn = btns[1],
+		LRDBtn = btns[2];
+
+	DLRBtn.disabled = "";
+	LDRBtn.disabled = "";
+	LRDBtn.disabled = "";
 }
 
 function addListener() {
-	var traverseBtn = document.querySelector("button");
+	var btns = document.querySelectorAll("button"),
+		DLRBtn = btns[0],
+		LDRBtn = btns[1],
+		LRDBtn = btns[2],
+		stopBtn = btns[3];
 
-	addHandler(traverseBtn, "click", traverse);
+	addHandler(DLRBtn, "click", preOrderTraverse);
+	addHandler(LDRBtn, "click", inOrderTraverse);
+	addHandler(LRDBtn, "click", postOrderTraverse);
+	addHandler(stopBtn, "click", stopTraverse);
 }
 
 addLoadEvent(addListener);
